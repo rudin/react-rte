@@ -10,6 +10,7 @@ import styles from './InputPopover.css';
 
 type Props = {
   className?: string;
+  data: ?Object;
   onCancel: () => any;
   onSubmit: (value: string) => any;
 };
@@ -39,6 +40,7 @@ export default class InputPopover extends Component {
   render() {
     let {props} = this;
     let className = cx(props.className, styles.root);
+    let defaultValue = props.data && props.data.url;
     return (
       <div className={className}>
         <div className={styles.inner}>
@@ -48,6 +50,7 @@ export default class InputPopover extends Component {
             placeholder="https://example.com/"
             className={styles.input}
             onKeyPress={this._onInputKeyPress}
+            defaultValue={defaultValue}
           />
           <ButtonGroup className={styles.buttonGroup}>
             <IconButton
